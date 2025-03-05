@@ -29,7 +29,7 @@ printf "##  ##     ##     ######   ##  ##   #####    ######   ######   ##  ##   
 
 printf "\n"
 
-printf "2024 @ Todos os direitos reservados a https://tripleplay.network\n"
+printf "2025 @ Todos os direitos reservados a https://tripleplay.network\n"
 
 
 
