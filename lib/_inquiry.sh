@@ -11,7 +11,7 @@ get_mysql_root_password() {
 get_link_git() {
   
   print_banner
-  printf "${WHITE} 💻 Insira o link do GITHUB do Atendechat que deseja instalar:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Insira o link do GITHUB do TripleChat que deseja instalar:${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " link_git
 }
@@ -201,14 +201,14 @@ software_dominio() {
 inquiry_options() {
   
   print_banner
-  printf "${WHITE} 💻 Bem vindo(a) ao Gerenciador Atendechat, Selecione abaixo a proxima ação!${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Bem vindo(a) ao Gerenciador TripleChat, Selecione abaixo a proxima ação!${GRAY_LIGHT}"
   printf "\n\n"
-  printf "   [0] Instalar Atendechat\n"
-  printf "   [1] Atualizar Atendechat\n"
-  printf "   [2] Deletar Atendechat\n"
-  printf "   [3] Bloquear Atendechat\n"
-  printf "   [4] Desbloquear Atendechat\n"
-  printf "   [5] Alter. dominio Atendechat\n"
+  printf "   [0] Instalar TripleChat\n"
+  printf "   [1] Atualizar TripleChat\n"
+  printf "   [2] Deletar TripleChat\n"
+  printf "   [3] Bloquear TripleChat\n"
+  printf "   [4] Desbloquear TripleChat\n"
+  printf "   [5] Alter. dominio TripleChat\n"
   printf "\n"
   read -p "> " option
 

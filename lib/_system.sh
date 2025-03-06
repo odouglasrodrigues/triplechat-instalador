@@ -34,14 +34,14 @@ EOF
 #######################################
 system_git_clone() {
   print_banner
-  printf "${WHITE} 💻 Fazendo download do código Atendechat...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Fazendo download do código TripleChat...${GRAY_LIGHT}"
   printf "\n\n"
 
 
   sleep 2
 
   sudo su - deploy <<EOF
-  # git clone https://atendechat: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@github.com/atendechat-org/codatendechat.git /home/deploy/${instancia_add}/
+  # git clone https://TripleChat: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@github.com/TripleChat-org/codTripleChat.git /home/deploy/${instancia_add}/
   git clone ${link_git} /home/deploy/${instancia_add}/
 EOF
   sleep 2
@@ -54,7 +54,7 @@ EOF
 #######################################
 system_update() {
   print_banner
-  printf "${WHITE} 💻 Vamos atualizar o sistema do Atendechat...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos atualizar o sistema do TripleChat...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -76,7 +76,7 @@ EOF
 #######################################
 deletar_tudo() {
   print_banner
-  printf "${WHITE} 💻 Vamos deletar o Atendechat...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos deletar o TripleChat...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -122,7 +122,7 @@ EOF
 #######################################
 configurar_bloqueio() {
   print_banner
-  printf "${WHITE} 💻 Vamos bloquear o Atendechat...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos bloquear o TripleChat...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -149,7 +149,7 @@ EOF
 #######################################
 configurar_desbloqueio() {
   print_banner
-  printf "${WHITE} 💻 Vamos Desbloquear o Atendechat...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos Desbloquear o TripleChat...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -175,7 +175,7 @@ EOF
 #######################################
 configurar_dominio() {
   print_banner
-  printf "${WHITE} 💻 Vamos Alterar os Dominios do Atendechat...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos Alterar os Dominios do TripleChat...${GRAY_LIGHT}"
   printf "\n\n"
 
 sleep 2
