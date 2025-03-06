@@ -61,7 +61,7 @@ system_update() {
 
   sudo su - root <<EOF
   apt -y update
-  sudo apt-get install -y libxshmfence-dev libgbm-dev wget unzip fontconfig locales gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
+  sudo apt-get install -y curl libxshmfence-dev libgbm-dev wget unzip fontconfig locales gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
 EOF
 
   sleep 2
@@ -286,11 +286,13 @@ system_node_install() {
   sleep 2
 
   sudo su - root <<EOF
+ 
   curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-  apt-get install -y nodejs
   sleep 2
-  apt install npm
+  sudo apt install -y nodejs
   sleep 2
+  npm install -g npm@latest
+
 
   sudo mkdir -p /etc/apt/keyrings
   wget -qO - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/keyrings/pgdg.gpg
@@ -300,7 +302,6 @@ system_node_install() {
   sudo apt-get update -y && sudo apt-get -y install postgresql
   sleep 2
   sudo timedatectl set-timezone America/Sao_Paulo
-  sudo npm install -g pm2
   
 EOF
 
@@ -327,6 +328,9 @@ system_docker_install() {
   
   echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
 
+  sleep 2
+  apt update
+  sleep 2
   apt install -y docker-ce
 EOF
 
@@ -411,7 +415,6 @@ system_pm2_install() {
   printf "\n\n"
 
   sleep 2
-
   
   npm install -g pm2
 
