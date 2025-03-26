@@ -223,6 +223,11 @@ proxy_erp_install(){
 
 }
 
+proxy_erp_update(){
+  get_empresa_atualizar
+  proxyerp_update
+}
+
 software_update() {
   get_empresa_atualizar
   frontend_update
