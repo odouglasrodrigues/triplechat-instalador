@@ -9,11 +9,29 @@ get_mysql_root_password() {
 }
 
 get_link_git() {
-  
   print_banner
-  printf "${WHITE} 💻 Insira o link do GITHUB do TripleChat que deseja instalar:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Deseja usar o repositório padrão ou informar um link personalizado?${GRAY_LIGHT}"
   printf "\n\n"
-  read -p "> " link_git
+  printf "   [1] Usar repositório padrão\n"
+  printf "   [2] Informar outro repositório\n"
+  printf "\n"
+  read -p "> " git_option
+
+  case "${git_option}" in
+    1)
+      git_link="https://github.com/odouglasrodrigues/triplechat.git"
+      ;;
+    2)
+      printf "${WHITE} 💻 Insira o link do repositório Git:${GRAY_LIGHT}"
+      printf "\n\n"
+      read -p "> " git_link
+      ;;
+    *)
+      printf "${RED} ❌ Opção inválida. Usando repositório padrão.${GRAY_LIGHT}"
+      printf "\n\n"
+      git_link="https://github.com/odouglasrodrigues/triplechat.git"
+      ;;
+  esac
 }
 
 get_instancia_add() {
@@ -56,6 +74,22 @@ get_backend_url() {
   read -p "> " backend_url
 }
 
+get_api_url() {
+  
+  print_banner
+  printf "${WHITE} 💻 Digite o domínio do BACKEND/API para a ${instancia_add}:${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " api_url
+}
+
+get_proxyerp_url() {
+  
+  print_banner
+  printf "${WHITE} 💻 Digite o domínio do PROXYERP para a ${instancia_add}:${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " proxyerp_url
+}
+
 get_frontend_port() {
   
   print_banner
@@ -79,6 +113,14 @@ get_redis_port() {
   printf "${WHITE} 💻 Digite a porta do REDIS/AGENDAMENTO MSG para a ${instancia_add}; Ex: 5000 A 5999 ${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " redis_port
+}
+
+get_proxyerp_port() {
+  
+  print_banner
+  printf "${WHITE} 💻 Digite a porta do proxyerp para a ${instancia_add}; Ex: 6000 A 6999 ${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " proxyerp_port
 }
 
 get_empresa_delete() {
@@ -168,6 +210,19 @@ get_urls() {
   get_redis_port
 }
 
+proxy_erp_install(){
+  get_instancia_add
+  get_proxyerp_port
+  get_api_url
+  get_proxyerp_url
+  proxyerp_set_env
+  proxyerp_node_dependencies
+  proxyerp_start_pm2
+  proxyerp_nginx_setup
+  proxyerp_certbot_setup
+
+}
+
 software_update() {
   get_empresa_atualizar
   frontend_update
@@ -209,6 +264,8 @@ inquiry_options() {
   printf "   [3] Bloquear TripleChat\n"
   printf "   [4] Desbloquear TripleChat\n"
   printf "   [5] Alter. dominio TripleChat\n"
+  printf "   [6] Adicionar Proxy ERP (Envio de Mensagens)\n"
+  printf "   [7] Atualizar Proxy ERP (Envio de Mensagens)\n"
   printf "\n"
   read -p "> " option
 
@@ -236,6 +293,16 @@ inquiry_options() {
       software_dominio 
       exit
       ;;        
+
+    6) 
+      proxy_erp_install 
+      exit
+      ;;  
+    
+    7) 
+      proxy_erp_update
+      exit
+      ;;
 
     *) exit ;;
   esac
